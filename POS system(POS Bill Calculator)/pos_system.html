@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hela Rasa POS System</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .nav-buttons {
+        text-align: right;
+        margin: 10px;
+    }
+
+    .nav-button {
+        background: #2196F3;  /* Changed to blue */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-button:hover {
+        background: #1976D2;  /* Darker blue on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="hela-logo.png" alt="Hela Rasa" class="logo">
+    <h1 class="system-name">POS System</h1>
+    <!-- Add this in your header or navigation area -->
+    <div class="nav-buttons">
+      <button onclick="location.href='admin.html'" class="nav-button">Admin Panel</button>
+    </div>
+  </div>
+  
+  <div class="pos-container">
+    <!-- Add Item section moved to top -->
+    <div class="add-item-panel">
+      
+      <div class="add-item-controls">
+        <select id="category-select">
+          <!-- Categories will be added dynamically -->
+        </select>
+        <select id="item-select">
+          <!-- Items will be added dynamically -->
+        </select>
+        <button onclick="addSelectedItemToOrder()" class="add-btn">Add to Order</button>
+      </div>
+    </div>
+
+    <div class="order">
+      <h2>Order</h2>
+      <div class="order-table-container">
+        <table id="order-items">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Order items will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="total">
+        <strong>Total: LKR <span id="total-amount">0.00</span></strong>
+      </div>
+      <div class="action-buttons">
+        <button onclick="clearOrder()" class="clear-btn">Clear Order</button>
+        <button onclick="generateBill()">Generate Bill</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
