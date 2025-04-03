@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Food & Short Eats - Hela Rasa</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #F1F8E9; /* Coconut White */
+            color: #6D4C41; /* Earthy Brown */
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo h1 {
+            margin-left: 10px;
+            font-size: 24px;
+            color: #D32F2F; /* Rich Red */
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 15px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #fff; /* Changed to white text */
+            font-weight: 500;
+            padding: 8px 16px; /* Increased padding */
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background-color: #D32F2F; /* Rich Red background */
+            display: inline-block;
+            border: 2px solid #D32F2F;
+        }
+        
+        nav ul li a:hover {
+            background-color: transparent; /* Remove background on hover */
+            color: #D32F2F; /* Change text color to Rich Red */
+            border-color: #D32F2F; /* Keep border color */
+        }
+
+        /* Active state for current page */
+        nav ul li a.active {
+            background-color: #B71C1C; /* Darker red for active state */
+            border-color: #B71C1C;
+        }
+        
+        .social-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-icons a {
+            margin-left: 15px;
+            color: #388E3C; /* Deep Green */
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #FFB300; /* Golden Yellow */
+        }
+        
+        /* Menu Section */
+        .menu-section {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #6D4C41; /* Earthy Brown */
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #FFB300; /* Golden Yellow */
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .menu-list {
+            list-style: none;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(109, 76, 65, 0.1); /* Earthy Brown with opacity */
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-item h3 {
+            font-size: 1.2rem;
+            color: #D32F2F; /* Rich Red */
+            margin-right: 10px; /* Reduced space between name and price */
+        }
+        
+        .menu-item p {
+            font-size: 0.9rem;
+            color: #6D4C41; /* Earthy Brown */
+            margin-top: 5px;
+        }
+        
+        .menu-item .price {
+            font-size: 1.1rem;
+            color: #388E3C; /* Deep Green */
+            font-weight: 600;
+            white-space: nowrap; /* Prevent price from wrapping */
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #6D4C41; /* Earthy Brown */
+            color: #F1F8E9; /* Coconut White */
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #FFB300; /* Golden Yellow */
+            position: relative;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 2px;
+            background-color: #0097A7; /* Turquoise Blue */
+        }
+        
+        .footer-column p, .footer-column li {
+            color: #F1F8E9; /* Coconut White */
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li a {
+            color: #F1F8E9; /* Coconut White */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #FFB300; /* Golden Yellow */
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(241, 248, 233, 0.2); /* Coconut White with opacity */
+            color: rgba(241, 248, 233, 0.7); /* Coconut White with opacity */
+            font-size: 0.8rem;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                flex-basis: 100%;
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 0;
+                margin-bottom: 15px;
+            }
+            
+            .social-icons {
+                margin-left: auto;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="Images/logo.png" alt="Hela Rasa Logo">
+                <h1>Hela Rasa</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </nav>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Menu Section -->
+    <section class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Street Food & Short Eats</h2>
+            
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <div>
+                        <h3>Fish Cutlets</h3>
+                        <p>Crispy fish cutlets made with fresh fish and spices.</p>
+                    </div>
+                    <span class="price">LKR 100</span>
+                </li>
+                
+                <li class="menu-item">
+                    <div>
+                        <h3>Vegetable Rolls</h3>
+                        <p>Crunchy vegetable rolls filled with a mix of vegetables and spices.</p>
+                    </div>
+                    <span class="price">LKR 100</span>
+                </li>
+                
+                <li class="menu-item">
+                    <div>
+                        <h3>Egg Roti</h3>
+                        <p>Soft roti filled with a delicious egg mixture.</p>
+                    </div>
+                    <span class="price">LKR 100</span>
+                </li>
+                
+                <li class="menu-item">
+                    <div>
+                        <h3>Parippu Vade</h3>
+                        <p>Deep-fried lentil fritters, crispy and flavorful.</p>
+                    </div>
+                    <span class="price">LKR 50</span>
+                </li>
+                
+                <li class="menu-item">
+                    <div>
+                        <h3>Chicken Patties</h3>
+                        <p>Flaky pastry filled with spiced chicken.</p>
+                    </div>
+                    <span class="price">LKR 250</span>
+                </li>
+                
+                <li class="menu-item">
+                    <div>
+                        <h3>Samosa</h3>
+                        <p>Triangular pastry filled with spiced potatoes and peas.</p>
+                    </div>
+                    <span class="price">LKR 150</span>
+                </li>
+                
+                <li class="menu-item">
+                    <div>
+                        <h3>Kottu Roti (Small)</h3>
+                        <p>Chopped roti stir-fried with vegetables, egg, and spices.</p>
+                    </div>
+                    <span class="price">LKR 400</span>
+                </li>
+                
+                <li class="menu-item">
+                    <div>
+                        <h3>Ulundu Vade</h3>
+                        <p>Deep-fried lentil fritters, a popular Sri Lankan snack.</p>
+                    </div>
+                    <span class="price">LKR 100</span>
+                </li>
+                
+                <li class="menu-item">
+                    <div>
+                        <h3>Chicken Lollipops (4 pcs)</h3>
+                        <p>Spicy and crispy chicken lollipops.</p>
+                    </div>
+                    <span class="price">LKR 600</span>
+                </li>
+                
+                <li class="menu-item">
+                    <div>
+                        <h3>Fried Noodles (Small)</h3>
+                        <p>Stir-fried noodles with vegetables and a choice of protein.</p>
+                    </div>
+                    <span class="price">LKR 450</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>Hela Rasa is dedicated to bringing authentic Sri Lankan cuisine to food lovers. Our recipes are crafted with care using traditional methods and the finest ingredients.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Hela Rasa, New Town, Rathnapura</li>
+                        <li><i class="fas fa-phone"></i> 011 440 0678</li>
+                        <li><i class="fas fa-mobile-alt"></i> +94 76 330 0542</li>
+                        <li><i class="fas fa-envelope"></i> info@helarasa.lk</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 10:00 AM - 10:00 PM</li>
+                        <li>Saturday & Sunday: 11:00 AM - 11:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hela Rasa PVT LTD. All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove all mobile menu related JavaScript
+            // The script tag can be removed entirely if not needed for other functionality
+        });
+    </script>
+</body>
+</html>
